@@ -1,6 +1,6 @@
 # python-competative-problems
 ## Day - 1
-- Two Sum
-- IsDuplicate
-- IsAnagram
-- Product of array
+- Two Sum - easy
+- IsDuplicate - easy
+- IsAnagram - easy
+- Product of array - med
