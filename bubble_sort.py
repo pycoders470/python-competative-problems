@@ -1,10 +1,69 @@
-array = [64, 34, 25, 12, 22, 11, 90, 5]
+from typing import List
+import random as random
+from complexity_analyser import complexity_analyzer 
 
-def sort_array(array):
-    for i in range(len(array)-1):
-        for j in range(len(array)-i-1):
-            if array[j]>array[j+1]:
-                array[j],array[j+1] = array[j+1], array[j]
-    return array
+class BubbleSort:
+    """
+    Bubble Sort Algorithm Implementation.
+    
+    Bubble sort is a simple, comparison-based sorting algorithm that repeatedly steps through
+    the list, compares adjacent elements, and swaps them if they are in the wrong order.
+    The pass through the list is repeated until the list is sorted.
+    
+    The algorithm gets its name because smaller elements "bubble" to the top (beginning) of
+    the list with each iteration, while larger elements sink to the bottom (end).
+    
+    Characteristics:
+    - Simple and easy to understand
+    - Stable sort (maintains relative order of equal elements)
+    - In-place sort (requires minimal extra memory)
+    - Not efficient for large datasets
+    - Good for educational purposes and nearly sorted data
+    """
+    
+    @complexity_analyzer
+    def sort_array(self, array: List):
+        """
+        Sorts an array in ascending order using the Bubble Sort algorithm.
+        
+        This method repeatedly compares adjacent elements and swaps them if they are
+        in the wrong order. This process continues until no more swaps are needed,
+        indicating the array is sorted.
+        
+        How it works:
+        1. Compare each pair of adjacent elements
+        2. Swap them if the first element is greater than the second
+        3. After each pass, the largest unsorted element is placed in its correct position
+        4. Repeat until the entire array is sorted
+        
+        Time Complexity: 
+        - Best Case: O(n) - When array is already sorted (with optimization)
+        - Average Case: O(n²) - Random array
+        - Worst Case: O(n²) - When array is reverse sorted
+        
+        Space Complexity: O(1) - Sorts in-place with minimal extra space
+        
+        Args:
+            array (List): An unsorted list of comparable elements
+            
+        Returns:
+            List: The sorted array in ascending order
+            
+        Example:
+            >>> sorter = BubbleSort()
+            >>> result = sorter.sort_array([64, 34, 25, 12, 22, 11, 90, 5])
+            >>> print(result)
+            [5, 11, 12, 22, 25, 34, 64, 90]
+        """
+        for i in range(len(array)-1):
+            for j in range(len(array)-i-1):
+                if array[j]>array[j+1]:
+                    array[j],array[j+1] = array[j+1], array[j]
+        return array
 
-print('Sorted array:-',sort_array(array))
+
+Input = [64, 34, 25, 12, 22, 11, 90, 5]
+Input1 = list(random.sample(range(1,100),50))
+object = BubbleSort()
+object.sort_array(Input)
+object.sort_array(Input1)
