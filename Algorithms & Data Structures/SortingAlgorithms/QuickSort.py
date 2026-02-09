@@ -1,33 +1,9 @@
 from typing import List
 from complexity_analyser import complexity_analyzer
 
-def partition(start, end, array):
-    """Partition subarray using the Lomuto partition scheme.
-
-    This function selects the last element in the subarray as the pivot,
-    reorders the subarray so that all elements less than or equal to the
-    pivot come before it, and returns the pivot's final index.
-
-    Args:
-        start (int): start index of the subarray to partition
-        end (int): end index of the subarray to partition (pivot index)
-        array (List): the list being partitioned
-
-    Returns:
-        int: the index where the pivot element is finally placed
-    """
-    pivot_index = array[end]
-    i = start - 1
-    for j in range(start, end):
-        if array[j] <= pivot_index:
-            i+=1
-            array[i], array[j] = array[j], array[i]
-    array[i+1], array[end] = array[end], array[i+1]
-    return i+1
-
 
 class QuickSort:
-    
+    @complexity_analyzer
     def QuickSorting(self, array, start=0, end=None):
         """
         QuickSort (recursive) implementation with partitioning.
@@ -66,10 +42,35 @@ class QuickSort:
         if end is None:
             end = len(array) - 1
         if start < end:
-            pivot_index = partition(start, end, array)
+            pivot_index = self.partition(start, end, array)
             self.QuickSorting(array, start, pivot_index - 1)
             self.QuickSorting(array, pivot_index + 1, end)
         return array
+    
+    @complexity_analyzer
+    def partition(self, start, end, array):
+        """Partition subarray using the Lomuto partition scheme.
+
+        This function selects the last element in the subarray as the pivot,
+        reorders the subarray so that all elements less than or equal to the
+        pivot come before it, and returns the pivot's final index.
+
+        Args:
+            start (int): start index of the subarray to partition
+            end (int): end index of the subarray to partition (pivot index)
+            array (List): the list being partitioned
+
+        Returns:
+            int: the index where the pivot element is finally placed
+        """
+        pivot_index = array[end]
+        i = start - 1
+        for j in range(start, end):
+            if array[j] <= pivot_index:
+                i+=1
+                array[i], array[j] = array[j], array[i]
+        array[i+1], array[end] = array[end], array[i+1]
+        return i+1
 
 Input = [64, 34, 25, 12, 22, 11, 90, 5]
 object = QuickSort()
