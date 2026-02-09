@@ -57,6 +57,8 @@ class InsertionSort:
                 if array[j] > current_value:
                     array[j + 1] = array[j]
                     insert_index = j
+                else:
+                    break
             array[insert_index] = current_value
         return array
     
