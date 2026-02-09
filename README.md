@@ -7,8 +7,12 @@ A comprehensive learning repository for competitive programming problems and fun
 ```
 python-competative-problems/
 ├── Algorithms & Data Structures/
-│   ├── bubble_sort.py
-│   ├── selection_sort.py
+│   ├── SortingAlgorithms/
+│   │   ├── bubble_sort.py
+│   │   ├── selection_sort.py
+│   │   ├── InsertionSort.py
+│   │   ├── QuickSort.py
+│   │   └── MergrSort.py
 │   └── complexity_analyser.py
 │
 └── Problems/
@@ -32,3 +36,10 @@ python-competative-problems/
 - Bubble Sort with Complexity Analyzer
 - Selection Sort (Simple & Optimized versions)
 - Detailed Docstrings & Complexity Analysis
+
+### Day 3
+- Insertion Sort with detailed docstrings (pop/insert & optimized versions)
+- Quick Sort implementation with pseudocode and partition explanation
+- Merge Sort implementation with bug fix (recursive return capture)
+- Comprehensive docstrings with pseudocode for all sorting algorithms
+- Complexity analysis decorator applied to all implementations
