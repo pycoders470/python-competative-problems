@@ -13,6 +13,9 @@ python-competative-problems/
 │   │   ├── InsertionSort.py
 │   │   ├── QuickSort.py
 │   │   └── MergrSort.py
+│   ├── SearchingAlgorithms/
+│   │   ├── LinearSearch.py
+│   │   └── BinarySearch.py
 │   └── complexity_analyser.py
 │
 └── Problems/
@@ -43,3 +46,7 @@ python-competative-problems/
 - Merge Sort implementation with bug fix (recursive return capture)
 - Comprehensive docstrings with pseudocode for all sorting algorithms
 - Complexity analysis decorator applied to all implementations
+
+### Day 4
+- Linear Search with detailed docstrings and step-by-step pseudocode
+- Binary Search implementation with O(log n) complexity explanation
