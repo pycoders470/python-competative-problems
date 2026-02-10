@@ -54,6 +54,7 @@ python-competative-problems/
 ### Day 4
 - Linear Search with detailed docstrings and step-by-step pseudocode
 - Binary Search implementation with O(log n) complexity explanation
+- Linked List with comprehensive explanantion & implementation
 
 ---
 
