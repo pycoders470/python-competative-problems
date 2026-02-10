@@ -22,6 +22,16 @@ class InsertionSort:
         """
         Simple insertion sort using `pop` and `insert`.
 
+        Pseudocode (actual implementation):
+        1. for i = 1 to len(array)-1:
+           a. insert_index = i
+           b. current_value = array.pop(i)
+           c. for j = i-1 down to 0:
+              - if array[j] > current_value:
+                  insert_index = j
+           d. array.insert(insert_index, current_value)
+        2. return array
+
         This method takes the element at index `i`, removes it with `pop`,
         then finds the correct position in the already-sorted prefix and
         reinserts it using `insert`.
@@ -42,10 +52,22 @@ class InsertionSort:
         """
         Optimized insertion sort using in-place shifts.
 
+        Pseudocode (actual implementation):
+        1. for i = 1 to len(array)-1:
+           a. insert_index = i
+           b. current_value = array[i]
+           c. for j = i-1 down to 0:
+              - if array[j] > current_value:
+                  array[j+1] = array[j]
+                  insert_index = j
+              - else:
+                  break (early exit optimization)
+           d. array[insert_index] = current_value
+        2. return array
+
         Rather than popping and reinserting the current element, this method
         shifts larger elements one position to the right and writes the current
-        value into the correct slot. This reduces the number of list
-        operations and is closer to the classic in-place insertion sort.
+        value into the correct slot. Includes early break optimization.
 
         Time Complexity: O(n^2)
         Space Complexity: O(1)

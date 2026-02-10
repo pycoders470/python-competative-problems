@@ -60,43 +60,93 @@ python-competative-problems/
 #### 1. **Bubble Sort**
 Compares adjacent elements and swaps them if in wrong order.
 ```
-for i in range(n-1):
-    for j in range(n-i-1):
+for i in range(len(array)-1):
+    for j in range(len(array)-i-1):
         if array[j] > array[j+1]:
-            swap(array[j], array[j+1])
+            array[j], array[j+1] = array[j+1], array[j]
+return array
 ```
 ⏱️ Time: O(n²) | 💾 Space: O(1)
 
 #### 2. **Selection Sort**
 Finds minimum and places it at current position.
+
+**Simple Version (pop/insert):**
 ```
-for i in range(n):
-    min_index = find_minimum(array[i:])
-    swap(array[i], array[min_index])
+for i in range(len(array)-1):
+    min_index = i
+    for j in range(i+1, len(array)):
+        if array[j] < array[min_index]:
+            min_index = j
+    min_value = array.pop(min_index)
+    array.insert(i, min_value)
+return array
+```
+
+**Optimized Version (swap):**
+```
+for k in range(len(array)-1):
+    min_index = k
+    for l in range(k+1, len(array)):
+        if array[l] < array[min_index]:
+            min_index = l
+    array[k], array[min_index] = array[min_index], array[k]
+return array
 ```
 ⏱️ Time: O(n²) | 💾 Space: O(1)
 
 #### 3. **Insertion Sort**
 Builds sorted array by inserting elements in correct position.
+
+**Simple Version (pop/insert):**
 ```
-for i in range(1, n):
-    current = array[i]
-    j = i - 1
-    while j >= 0 and array[j] > current:
-        array[j+1] = array[j]
-        j -= 1
-    array[j+1] = current
+for i in range(1, len(array)):
+    insert_index = i
+    current_value = array.pop(i)
+    for j in range(i-1, -1, -1):
+        if array[j] > current_value:
+            insert_index = j
+    array.insert(insert_index, current_value)
+return array
 ```
-⏱️ Time: O(n²) avg, O(n) best | 💾 Space: O(1)
+
+**Optimized Version (shift with break):**
+```
+for i in range(1, len(array)):
+    insert_index = i
+    current_value = array[i]
+    for j in range(i-1, -1, -1):
+        if array[j] > current_value:
+            array[j+1] = array[j]
+            insert_index = j
+        else:
+            break
+    array[insert_index] = current_value
+return array
+```
+⏱️ Time: O(n²) | 💾 Space: O(1)
 
 #### 4. **Quick Sort**
 Divides using pivot, conquers recursively.
 ```
 function quickSort(array, start, end):
+    if end is None:
+        end = len(array) - 1
     if start < end:
         pivot_index = partition(array, start, end)
-        quickSort(array, start, pivot_index-1)
-        quickSort(array, pivot_index+1, end)
+        quickSort(array, start, pivot_index - 1)
+        quickSort(array, pivot_index + 1, end)
+    return array
+
+partition(start, end, array):
+    pivot = array[end]
+    i = start - 1
+    for j in range(start, end):
+        if array[j] <= pivot:
+            i += 1
+            swap(array[i], array[j])
+    swap(array[i+1], array[end])
+    return i + 1
 ```
 ⏱️ Time: O(n log n) avg, O(n²) worst | 💾 Space: O(log n)
 
@@ -107,9 +157,25 @@ function mergeSort(array):
     if len(array) <= 1:
         return array
     mid = len(array) // 2
-    left = mergeSort(array[:mid])
-    right = mergeSort(array[mid:])
-    return merge(left, right)
+    leftpart = array[:mid]
+    rightpart = array[mid:]
+    leftpart = mergeSort(leftpart)
+    rightpart = mergeSort(rightpart)
+    return merge(leftpart, rightpart)
+
+merge(leftpart, rightpart):
+    temp = []
+    i = j = 0
+    while i < len(leftpart) and j < len(rightpart):
+        if leftpart[i] < rightpart[j]:
+            temp.append(leftpart[i])
+            i += 1
+        else:
+            temp.append(rightpart[j])
+            j += 1
+    temp.extend(leftpart[i:])
+    temp.extend(rightpart[j:])
+    return temp
 ```
 ⏱️ Time: O(n log n) all cases | 💾 Space: O(n)
 
