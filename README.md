@@ -16,6 +16,10 @@ python-competative-problems/
 │   ├── SearchingAlgorithms/
 │   │   ├── LinearSearch.py
 │   │   └── BinarySearch.py
+|   |── LinkedList/
+│   │   ├── SinglyLinkedList.py
+│   │   └── DoubleLinkedList.py
+│   │   └── CircularLinkedList.py
 │   └── complexity_analyser.py
 │
 └── Problems/
@@ -207,6 +211,77 @@ while left <= right:
 return -1
 ```
 ⏱️ Time: O(log n) | 💾 Space: O(1) | ⚠️ Requires sorted array
+
+---
+
+### Linked Lists
+
+Linked lists are linear data structures composed of nodes. Each node contains data and a reference to the next node (and optionally a previous node for doubly linked lists). This repo includes simple node classes and traversal examples.
+
+---
+
+### 📊 Arrays vs Linked Lists Comparison
+
+| Operation | Array | Linked List |
+|-----------|-------|-------------|
+| **Access/Lookup** | O(1) ⚡ Fast random access via index | O(n) Sequential access required |
+| **Insertion** | O(n) May require shifting elements | O(1) Insert if pointer known |
+| **Deletion** | O(n) May require shifting elements | O(1) Delete if pointer known |
+| **Search** | O(n) Linear scan (O(log n) if sorted with binary search) | O(n) Must traverse from head |
+| **Space** | Contiguous memory, fixed size | Dynamic, grows as needed |
+| **Memory Overhead** | Minimal, just data | Higher (extra pointers per node) |
+| **Cache Performance** | Excellent (data locality) | Poor (scattered memory) |
+
+**When to use Arrays:**
+- Need fast random access
+- Memory is limited (minimal overhead)
+- Data size is known and fixed
+- Performance-critical applications
+
+**When to use Linked Lists:**
+- Frequent insertions/deletions at known positions
+- Size varies significantly
+- Don't need random access
+- Memory fragmentation concerns
+
+---
+
+#### Singly Linked List (forward traversal)
+```
+current = head
+while current is not None:
+    print(current.data)
+    current = current.next
+```
+⏱️ Time: O(n) | 💾 Space: O(n)
+
+#### Doubly Linked List (forward + backward traversal)
+```
+# forward
+current = head
+while current is not None:
+    print(current.data)
+    current = current.next
+
+# backward (start from tail)
+current = tail
+while current is not None:
+    print(current.data)
+    current = current.prev
+```
+⏱️ Time: O(n) | 💾 Space: O(n)
+
+#### Circular Linked List (single loop around)
+```
+current = head
+start = head
+print(current.data)
+current = current.next
+while current != start:
+    print(current.data)
+    current = current.next
+```
+⏱️ Time: O(n) per loop | 💾 Space: O(n)
 
 ---
 
