@@ -26,21 +26,20 @@ class BubbleSort:
         """
         Sorts an array in ascending order using the Bubble Sort algorithm.
         
-        This method repeatedly compares adjacent elements and swaps them if they are
-        in the wrong order. This process continues until no more swaps are needed,
-        indicating the array is sorted.
+        Pseudocode (actual implementation):
+        1. for i = 0 to len(array)-2:
+           a. for j = 0 to len(array)-i-2:
+              - if array[j] > array[j+1]:
+                  swap(array[j], array[j+1])
+        2. return array
         
         How it works:
-        1. Compare each pair of adjacent elements
-        2. Swap them if the first element is greater than the second
-        3. After each pass, the largest unsorted element is placed in its correct position
-        4. Repeat until the entire array is sorted
+        - Compare each pair of adjacent elements
+        - Swap them if the first element is greater than the second
+        - After each pass, the largest unsorted element is placed in its correct position
+        - Repeat until the entire array is sorted
         
-        Time Complexity: 
-        - Best Case: O(n) - When array is already sorted (with optimization)
-        - Average Case: O(n²) - Random array
-        - Worst Case: O(n²) - When array is reverse sorted
-        
+        Time Complexity: O(n²) in all cases
         Space Complexity: O(1) - Sorts in-place with minimal extra space
         
         Args:

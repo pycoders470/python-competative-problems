@@ -30,8 +30,38 @@ Output: [["a"]]
 class Solution(object):
     def groupAnagrams(self, strs):
         """
-        :type strs: List[str]
-        :rtype: List[List[str]]
+        Group anagrams together from a list of strings.
+
+        Pseudocode:
+        1. Initialize: output = {} (empty dictionary)
+        2. For each string i in strs:
+           a. sorted_str = sort characters in i alphabetically
+           b. if sorted_str EXISTS as key in output:
+              - append i to output[sorted_str]
+           c. else:
+              - create new list: output[sorted_str] = [i]
+        3. Return all values (grouped anagrams) from dictionary
+
+        Approach:
+        - Anagrams have identical characters when sorted
+        - Use sorted string as key to group anagrams
+        - Dictionary automatically groups strings with same sorted form
+
+        Time Complexity: O(n × k log k) - n strings, each sorted in O(k log k)
+        Space Complexity: O(n) - dictionary stores all strings
+
+        Args:
+            strs (List[str]): list of strings to group
+
+        Returns:
+            List[List[str]]: grouped anagrams, each group in a list
+
+        Example:
+            >>> solution = Solution()
+            >>> result = solution.groupAnagrams(["eat","tea","tan","ate","nat","bat"])
+            >>> print(result)
+            [["eat","tea","ate"], ["tan","nat"], ["bat"]]
+            # Anagrams grouped together
         """
         output = {}
         for i in strs:

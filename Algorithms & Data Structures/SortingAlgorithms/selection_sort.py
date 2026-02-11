@@ -8,15 +8,20 @@ class SelectionSort:
         """
         Simple Selection Sort Algorithm.
         
-        This function sorts an array in ascending order using the selection sort algorithm.
-        In each iteration, it finds the smallest element from the unsorted portion of the array
-        and places it at the beginning of the unsorted portion.
+        Pseudocode (actual implementation):
+        1. for i = 0 to len(array)-2:
+           a. min_index = i
+           b. for j = i+1 to len(array)-1:
+              - if array[j] < array[min_index]:
+                  min_index = j
+           c. min_value = array.pop(min_index)
+           d. array.insert(i, min_value)
+        2. return array
         
         How it works:
-        1. Iterate through each position in the array (except the last)
-        2. Find the index of the minimum element in the remaining unsorted portion
-        3. Remove the minimum element and insert it at the current position
-        4. Repeat until the array is sorted
+        - Iterate through each position and find the minimum element
+        - Remove minimum with pop() and reinsert at current position
+        - Repeat until the array is sorted
         
         Time Complexity: O(n²) - Due to nested loops
         Space Complexity: O(1) - Sorts in-place (excluding the pop/insert operations)
@@ -47,20 +52,23 @@ class SelectionSort:
         """
         Optimized Selection Sort Algorithm.
         
-        This is an optimized version of selection sort that uses element swapping instead of
-        removing and inserting elements. This approach eliminates the costly pop and insert
-        operations, making it more efficient in practice.
+        Pseudocode (actual implementation):
+        1. for k = 0 to len(array1)-2:
+           a. min_index = k
+           b. for l = k+1 to len(array1)-1:
+              - if array1[l] < array1[min_index]:
+                  min_index = l
+           c. swap(array1[k], array1[min_index])
+        2. return array1
         
         How it works:
-        1. Iterate through each position in the array (except the last)
-        2. Find the index of the minimum element in the remaining unsorted portion
-        3. Swap the current element with the minimum element (if they differ)
-        4. Repeat until the array is sorted
+        - Find minimum in remaining unsorted portion
+        - Swap current position with minimum (no pop/insert overhead)
+        - Repeat until array is sorted
         
-        Advantages over SimpleSelectionSort:
+        Advantages:
         - Avoids expensive pop() and insert() operations
-        - Reduces unnecessary element shifts
-        - Better performance on arrays with larger elements
+        - In-place swaps are more efficient
         
         Time Complexity: O(n²) - Same as simple selection sort
         Space Complexity: O(1) - Sorts completely in-place with only swaps
