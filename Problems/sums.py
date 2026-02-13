@@ -51,3 +51,34 @@ class Solution:
                     if nums[i] + nums[j] == target:
                         return [i,j]
         return []
+
+
+if __name__ == '__main__':
+    print("=" * 50)
+    print("Two Sum Problem")
+    print("=" * 50)
+    
+    solution = Solution()
+    
+    # Test cases
+    test_cases = [
+        ([1, 2, 3, 4], 5, [0, 3]),
+        ([0, -1, 2, -3, -1], -2, [1, 4]),
+        ([2, 7, 11, 15], 9, [0, 1]),
+        ([3, 2, 4], 6, [1, 2]),
+        ([1, 1], 2, [0, 1]),
+        ([1, 2, 3], 5, [1, 2]),
+    ]
+    
+    print("\n--- Testing Two Sum ---")
+    for nums, target, expected in test_cases:
+        result = solution.twoSum(nums, target)
+        status = "✓" if result == expected else "✗"
+        if result:
+            sum_val = nums[result[0]] + nums[result[1]]
+            print(f"{status} twoSum({nums}, {target}) = {result}")
+            print(f"   nums[{result[0]}] + nums[{result[1]}] = {nums[result[0]]} + {nums[result[1]]} = {sum_val}")
+        else:
+            print(f"{status} twoSum({nums}, {target}) = {result} (No pair found)")
+    
+    print("=" * 50)

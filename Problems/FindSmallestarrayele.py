@@ -47,5 +47,28 @@ def FindSmallest(my_array):
             min_value = i
     return min_value
 
-my_array = [7, 12, 9, 4, 11]
-print("Smallest element from the array is:", FindSmallest(my_array))
+
+if __name__ == '__main__':
+    print("=" * 50)
+    print("Find Smallest Array Element")
+    print("=" * 50)
+    
+    # Test cases
+    test_cases = [
+        ([7, 12, 9, 4, 11], 4),
+        ([1, 2, 3, 4, 5], 1),
+        ([5, 4, 3, 2, 1], 1),
+        ([100], 100),
+        ([50, 50, 50], 50),
+        ([-5, -10, -1, -20], -20),
+        ([0, -5, 10], -5),
+        ([999, 1, 500], 1)
+    ]
+    
+    print("\n--- Testing Find Smallest Element ---")
+    for arr, expected in test_cases:
+        result = FindSmallest(arr)
+        status = "✓" if result == expected else "✗"
+        print(f"{status} FindSmallest({arr}) = {result} (expected: {expected})")
+    
+    print("=" * 50)

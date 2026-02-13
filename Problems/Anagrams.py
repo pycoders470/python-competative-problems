@@ -52,3 +52,32 @@ class Solution:
         if count==len(t):
             return True
         return False
+
+
+if __name__ == '__main__':
+    print("=" * 50)
+    print("Anagram Checker")
+    print("=" * 50)
+    
+    solution = Solution()
+    
+    # Test cases
+    test_cases = [
+        ("god", "dog", True),
+        ("can", "pan", False),
+        ("listen", "silent", True),
+        ("hello", "world", False),
+        ("abc", "cba", True),
+        ("a", "a", True),
+        ("ab", "ba", True),
+        ("ab", "cd", False)
+    ]
+    
+    print("\n--- Testing Anagram Detection ---")
+    for s, t, expected in test_cases:
+        result = solution.isAnagram(s, t)
+        status = "✓" if result == expected else "✗"
+        output = "Anagrams" if result else "Not Anagrams"
+        print(f"{status} isAnagram('{s}', '{t}') = {output}")
+    
+    print("=" * 50)

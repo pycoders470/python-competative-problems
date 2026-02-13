@@ -61,3 +61,30 @@ class Solution:
                     res=res*nums[j]
             prod.append(res)
         return prod
+
+
+if __name__ == '__main__':
+    print("=" * 50)
+    print("Product of Array Except Self")
+    print("=" * 50)
+    
+    solution = Solution()
+    
+    # Test cases
+    test_cases = [
+        ([1, 3, 5, 7], [105, 35, 21, 15]),
+        ([2, 4, 6, 8], [192, 96, 64, 48]),
+        ([1, 2], [2, 1]),
+        ([2, 3], [3, 2]),
+        ([1, 1, 1], [1, 1, 1]),
+        ([5, 2], [2, 5]),
+    ]
+    
+    print("\n--- Testing Product Except Self ---")
+    for nums, expected in test_cases:
+        result = solution.productExceptSelf(nums)
+        status = "✓" if result == expected else "✗"
+        print(f"{status} Input: {nums}")
+        print(f"   Output: {result} (expected: {expected})")
+    
+    print("=" * 50)
