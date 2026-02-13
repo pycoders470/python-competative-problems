@@ -94,5 +94,3 @@ currentnode = currentnode.prev
 while currentnode!=startnode:
     print(currentnode.data, end=',')
     currentnode=currentnode.prev
-
-

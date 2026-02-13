@@ -28,7 +28,13 @@ python-competative-problems/
     ├── Anagrams.py
     ├── grouping_anagrams.py
     ├── product_of_array.py
-    └── FindSmallestarrayele.py
+    ├── FindSmallestarrayele.py
+    ├── ArrayPartition.py
+    ├── DigitsInNumber.py
+    ├── GCD.py
+    ├── IsPrime.py
+    ├── Palindrome.py
+    └── ReverseInteger.py
 ```
 
 ##  Daily Progress
@@ -55,6 +61,19 @@ python-competative-problems/
 - Linear Search with detailed docstrings and step-by-step pseudocode
 - Binary Search implementation with O(log n) complexity explanation
 - Linked List with comprehensive explanantion & implementation
+
+### Day 5
+- **New Problem Files with Full Documentation:**
+  - **DigitsInNumber.py**: Count digits + Armstrong numbers (narcissistic numbers)
+  - **GCD.py**: Three approaches - Brute Force O(n), Euclidean Iterative O(log n), Euclidean Recursive O(log n), plus LCM
+  - **IsPrime.py**: Prime checker O(√n), Brute Force prime counting O(n²), Sieve of Eratosthenes O(n log log n)
+  - **Palindrome.py**: Check 32-bit integer palindromes with overflow handling
+  - **ReverseInteger.py**: Reverse integers with 32-bit constraints
+- **All Problem Files Enhanced:**
+  - Added comprehensive test cases with expected outputs
+  - Formatted demo sections with ✓/✗ status indicators
+  - Clear visualization of inputs/outputs/calculations
+  - Proper `if __name__ == '__main__':` guards
 
 ---
 
@@ -359,3 +378,155 @@ for i in array:
 return min_value
 ```
 ⏱️ Time: O(n) | 💾 Space: O(1)
+
+#### 7. **Array Partition**
+Maximize sum of minimums in pairs. Uses greedy sorting.
+```
+sort(array)
+result = 0
+for i in range(0, len(array), 2):
+    result += array[i]  # Add only minimum of each pair
+return result
+```
+⏱️ Time: O(n log n) | 💾 Space: O(1)
+
+---
+
+### Number Theory & Digit Problems
+
+#### 1. **Count Digits in Number**
+Count how many digits a number has.
+```
+count = 0
+while n != 0:
+    digit = n % 10
+    n = n // 10
+    count += 1
+return count
+```
+⏱️ Time: O(log n) | 💾 Space: O(1)
+
+#### 2. **Armstrong Number (Narcissistic)**
+Check if sum of digits raised to power of digit count equals number. Example: 153 = 1³ + 5³ + 3³
+```
+cube_sum = 0
+original = n
+while n != 0:
+    digit = n % 10
+    n = n // 10
+    cube_sum += digit ^ 3
+return original == cube_sum
+```
+⏱️ Time: O(log n) | 💾 Space: O(1)
+
+#### 3. **GCD/HCF (Greatest Common Divisor)**
+
+**Brute Force Approach:**
+```
+gcd = 1
+for i in range(1, min(m,n)+1):
+    if m % i == 0 AND n % i == 0:
+        gcd = i
+return gcd
+```
+⏱️ Time: O(min(m,n)) | 💾 Space: O(1)
+
+**Euclidean Algorithm (Iterative):**
+```
+while m > 0 AND n > 0:
+    if m > n:
+        m = m % n
+    else:
+        n = n % m
+return (m == 0) ? n : m
+```
+⏱️ Time: O(log min(m,n)) | 💾 Space: O(1)
+
+**Euclidean Algorithm (Recursive):**
+```
+if n == 0:
+    return m
+return GCD(n, m % n)
+```
+⏱️ Time: O(log min(m,n)) | 💾 Space: O(log min(m,n))
+
+#### 4. **LCM (Least Common Multiple)**
+Using GCD: LCM(a,b) = (a × b) / GCD(a,b)
+```
+gcd = GCD(a, b)
+lcm = (a * b) // gcd
+return lcm
+```
+⏱️ Time: O(log min(a,b)) | 💾 Space: O(log min(a,b))
+
+#### 5. **Prime Checking**
+
+**Trial Division (Optimized):**
+```
+if n < 2:
+    return False
+for i in range(2, √n + 1):
+    if n % i == 0:
+        return False
+return True
+```
+⏱️ Time: O(√n) | 💾 Space: O(1)
+
+**Count Primes - Brute Force:**
+```
+count = 0
+for i in range(2, n):
+    is_prime = True
+    for j in range(2, i//2 + 1):
+        if i % j == 0:
+            is_prime = False
+            break
+    if is_prime:
+        count += 1
+return count
+```
+⏱️ Time: O(n²) | 💾 Space: O(1)
+
+**Count Primes - Sieve of Eratosthenes (OPTIMAL):**
+```
+if n < 2:
+    return 0
+is_prime = [True] * n
+is_prime[0] = is_prime[1] = False
+for i in range(2, √n + 1):
+    if is_prime[i]:
+        for j in range(i², n, i):
+            is_prime[j] = False
+return count of True values
+```
+⏱️ Time: O(n log log n) | 💾 Space: O(n) - **Most Efficient!**
+
+#### 6. **Palindrome Checker**
+Check if integer reads same forwards and backwards.
+```
+if x < 0:
+    return False
+original = x
+reversed_num = 0
+while x > 0:
+    reversed_num = reversed_num * 10 + x % 10
+    x = x // 10
+return reversed_num == original
+```
+⏱️ Time: O(log x) | 💾 Space: O(1)
+
+#### 7. **Reverse Integer**
+Reverse digits of integer with 32-bit overflow handling.
+```
+sign = 1 if x > 0 else -1
+x = abs(x)
+reversed_num = 0
+while x != 0:
+    digit = x % 10
+    reversed_num = reversed_num * 10 + digit
+    x = x // 10
+if reversed_num exceeds 32-bit bounds:
+    return 0
+return sign * reversed_num
+```
+⏱️ Time: O(log x) | 💾 Space: O(1)

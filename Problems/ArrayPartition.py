@@ -64,8 +64,30 @@ class ArrayPartition:
         for i in range(0,len(nums),2):
             res += nums[i]
         return res
+
+
+if __name__ == '__main__':
+    print("=" * 50)
+    print("Array Partition - Maximize Sum of Minimums")
+    print("=" * 50)
     
-array = [6,2,6,5,1,2]
-object = ArrayPartition()
-sum = object.arrayPairSum(array)
-print("Maximun possible sum is: ", sum)
+    # Test cases
+    test_cases = [
+        ([1, 4, 3, 2], 4),
+        ([6, 2, 6, 5, 1, 2], 9),
+        ([1, 2], 1),
+        ([1, 2, 3, 4, 5, 6], 9),
+        ([8, 5, 3, 1, 9, 2], 11),
+        ([1, 1, 1, 1], 2)
+    ]
+    
+    print("\n--- Testing Array Partition ---")
+    for nums, expected in test_cases:
+        obj = ArrayPartition()
+        result = obj.arrayPairSum(nums.copy())
+        status = "✓" if result == expected else "✗"
+        sorted_nums = sorted(nums)
+        pairs = [(sorted_nums[i], sorted_nums[i+1]) for i in range(0, len(sorted_nums), 2)]
+        print(f"{status} Input: {nums} → Pairs: {pairs} → Sum: {result} (expected: {expected})")
+    
+    print("=" * 50)

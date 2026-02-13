@@ -56,3 +56,31 @@ class Solution:
             return True
         return False
     
+
+if __name__ == '__main__':
+    print("=" * 50)
+    print("Duplicate Detection")
+    print("=" * 50)
+    
+    solution = Solution()
+    
+    # Test cases
+    test_cases = [
+        ([1, 1, 2, 3], True),
+        ([1, 2, 3, 4], False),
+        ([1, 1], True),
+        ([1], False),
+        ([1, 2, 3, 3, 4], True),
+        ([5, 4, 3, 2, 1], False),
+        ([1, 1, 1, 1], True),
+        ([100, 200, 300], False)
+    ]
+    
+    print("\n--- Testing Duplicate Detection ---")
+    for nums, expected in test_cases:
+        result = solution.hasDuplicate(nums)
+        status = "✓" if result == expected else "✗"
+        output = "Duplicates Found" if result else "No Duplicates"
+        print(f"{status} hasDuplicate({nums}) = {output}")
+    
+    print("=" * 50)
